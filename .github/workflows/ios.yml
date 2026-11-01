@@ -52,11 +52,11 @@ jobs:
             -scheme App \
             -configuration Release \
             -destination 'generic/platform=iOS' \
-            -archivePath "$RUNNER_TEMP/Dasnomad.xcarchive" \
+            -archivePath "$RUNNER_TEMP/DasNomad.xcarchive" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
-          ditto -c -k --keepParent "$RUNNER_TEMP/Dasnomad.xcarchive" "$RUNNER_TEMP/Dasnomad-unsigned.xcarchive.zip"
+          ditto -c -k --keepParent "$RUNNER_TEMP/DasNomad.xcarchive" "$RUNNER_TEMP/DasNomad-unsigned.xcarchive.zip"
 
       - name: Import signing certificate
         if: env.IOS_CERTIFICATE_P12 != ''
@@ -91,7 +91,7 @@ jobs:
             -scheme App \
             -configuration Release \
             -destination 'generic/platform=iOS' \
-            -archivePath "$RUNNER_TEMP/Dasnomad.xcarchive" \
+            -archivePath "$RUNNER_TEMP/DasNomad.xcarchive" \
             -allowProvisioningUpdates \
             CODE_SIGN_STYLE=Manual \
             DEVELOPMENT_TEAM="$IOS_TEAM_ID" \
@@ -126,7 +126,7 @@ jobs:
           </plist>
           EOF
           xcodebuild -exportArchive \
-            -archivePath "$RUNNER_TEMP/Dasnomad.xcarchive" \
+            -archivePath "$RUNNER_TEMP/DasNomad.xcarchive" \
             -exportPath "$RUNNER_TEMP/export" \
             -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
 
@@ -143,14 +143,14 @@ jobs:
         if: env.IOS_CERTIFICATE_P12 == ''
         uses: actions/upload-artifact@v4
         with:
-          name: Dasnomad-iOS-unsigned
-          path: ${{ runner.temp }}/Dasnomad-unsigned.xcarchive.zip
+          name: DasNomad-iOS-unsigned
+          path: ${{ runner.temp }}/DasNomad-unsigned.xcarchive.zip
           if-no-files-found: error
 
       - name: Upload signed IPA
         if: env.IOS_CERTIFICATE_P12 != ''
         uses: actions/upload-artifact@v4
         with:
-          name: Dasnomad-iOS
+          name: DasNomad-iOS
           path: ${{ runner.temp }}/export/*.ipa
           if-no-files-found: error

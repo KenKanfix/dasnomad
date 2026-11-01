@@ -1,6 +1,6 @@
 {
   "appId": "io.github.kenkanfix.dasnomad",
-  "appName": "Dasnomad",
+  "appName": "DasNomad",
   "webDir": "dist-native",
   "server": {
     "androidScheme": "https"

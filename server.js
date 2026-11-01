@@ -105,7 +105,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Dasnomad is running at http://localhost:${port}`);
+  console.log(`DasNomad is running at http://localhost:${port}`);
 });
 
 server.on("error", (error) => {

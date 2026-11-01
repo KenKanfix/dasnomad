@@ -2756,7 +2756,7 @@ function installPromptSetup() {
     const choice = await state.installPrompt.userChoice;
     if (choice.outcome === "accepted") {
       els.installButton.hidden = true;
-      showToast("Dasnomad was added to your device.", "success");
+      showToast("DasNomad was added to your device.", "success");
     }
     state.installPrompt = null;
   });
@@ -2764,7 +2764,7 @@ function installPromptSetup() {
   window.addEventListener("appinstalled", () => {
     state.installPrompt = null;
     els.installButton.hidden = true;
-    showToast("Dasnomad installed. It now works offline.", "success");
+    showToast("DasNomad installed. It now works offline.", "success");
   });
 }
 

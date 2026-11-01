@@ -1,6 +1,6 @@
 # Store upload packages
 
-Version 0.1.0 (build 1) for Dasnomad.
+Version 0.1.0 (build 1) for DasNomad.
 
 - `google-play/` - signed AAB, APK, graphics, screenshots, metadata, and internal testing instructions.
 - `app-store/` - TestFlight instructions, App Store metadata, screenshots, icon reference, and export options template.

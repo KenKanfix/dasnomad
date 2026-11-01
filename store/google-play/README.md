@@ -1,13 +1,13 @@
 # Google Play upload package
 
-App: Dasnomad
+App: DasNomad
 Package: io.github.kenkanfix.dasnomad
 Version: 0.1.0 (versionCode 1)
 
 ## What is in this folder
 
-- `builds/Dasnomad-0.1.0-release.aab` - signed Android App Bundle for Play Console.
-- `builds/Dasnomad-0.1.0-release.apk` - signed APK for direct device testing. Do not upload the APK to Play Console.
+- `builds/DasNomad-0.1.0-release.aab` - signed Android App Bundle for Play Console.
+- `builds/DasNomad-0.1.0-release.apk` - signed APK for direct device testing. Do not upload the APK to Play Console.
 - `graphics/icon-512.png` - 512 x 512 app icon.
 - `graphics/feature-graphic-1024x500.png` - feature graphic.
 - `screenshots/phone/` - 1080 x 1920 phone screenshots.
@@ -17,7 +17,7 @@ Version: 0.1.0 (versionCode 1)
 ## Internal testing upload steps
 
 1. Open Google Play Console and create the app.
-   - App name: Dasnomad: Currency Converter
+   - App name: DasNomad: Currency Converter
    - Default language: English (United States)
    - App or game: App
    - Free or paid: Free
@@ -31,7 +31,7 @@ Version: 0.1.0 (versionCode 1)
    - Government apps: No. Financial features: No. Health: No.
 3. Set up Internal testing.
    - Create an email list of testers.
-   - Upload `builds/Dasnomad-0.1.0-release.aab`.
+   - Upload `builds/DasNomad-0.1.0-release.aab`.
    - Copy release notes from `metadata/en-US/release-notes.txt`.
    - Roll out the internal test and share the opt-in link.
 4. Complete the store listing.
@@ -50,9 +50,9 @@ upload key is still required for every future update.
 Run these from the repository root after building:
 
 ```powershell
-& "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\aapt.exe" dump badging store/builds/Dasnomad-0.1.0-release.apk
-& "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\apksigner.bat" verify --print-certs store/builds/Dasnomad-0.1.0-release.apk
-jarsigner -verify store/builds/Dasnomad-0.1.0-release.aab
+& "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\aapt.exe" dump badging store/builds/DasNomad-0.1.0-release.apk
+& "$env:LOCALAPPDATA\Android\Sdk\build-tools\36.0.0\apksigner.bat" verify --print-certs store/builds/DasNomad-0.1.0-release.apk
+jarsigner -verify store/builds/DasNomad-0.1.0-release.aab
 ```
 
 Expected identity: io.github.kenkanfix.dasnomad, versionName 0.1.0, versionCode 1.

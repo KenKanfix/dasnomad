@@ -423,3 +423,17 @@ Status: Local-tips data and bottom card UI implemented; changes are uncommitted.
 
 - Tips are static curated guidance, not live safety alerts or real-time scam reports.
 - Sources are official tourism boards and city/government sites; review links before publishing and refresh the dataset periodically.
+
+## Session 2026-10-30 - Play Store Setup and Signing Key Record
+
+### Android signing key
+
+- Upload keystore: `android/keystore/curnomad-upload.jks` (gitignored).
+- Signing config: `android/keystore.properties` (gitignored; contains the store/key passwords, so never commit or share it).
+- Key alias: `curnomad`.
+- Certificate subject: `CN=Curnomad, O=KenKanfix, C=AU`.
+- Certificate SHA-256 digest: `88b6620d999fcf9a9abeb1506b049803a46b6072e0efb6f4b619dd441c0e3cbf`.
+- Current signed package: `io.github.kenkanfix.dasnomad`, version `0.1.0` (versionCode 1).
+- The keystore was originally created for Curnomad and was intentionally retained through the DasNomad rebrand.
+- Back up both the `.jks` file and `keystore.properties` offline in secure, encrypted storage. After Play App Signing enrollment, this upload key is still required for every future update. Losing it can block updates.
+- Do not regenerate the key or change the alias/certificate unless intentionally rotating the upload key through Play Console.

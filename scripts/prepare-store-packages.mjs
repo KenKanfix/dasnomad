@@ -9,8 +9,8 @@ const LISTING = JSON.parse(await fs.readFile(path.join(STORE, "listing.json"), "
 
 const AAB_SOURCE = path.join(ROOT, "android", "app", "build", "outputs", "bundle", "release", "app-release.aab");
 const APK_SOURCE = path.join(ROOT, "android", "app", "build", "outputs", "apk", "release", "app-release.apk");
-const AAB_NAME = `Dasnomad-${LISTING.app.version}-release.aab`;
-const APK_NAME = `Dasnomad-${LISTING.app.version}-release.apk`;
+const AAB_NAME = `DasNomad-${LISTING.app.version}-release.aab`;
+const APK_NAME = `DasNomad-${LISTING.app.version}-release.apk`;
 
 const googlePlay = path.join(STORE, "google-play");
 const appStore = path.join(STORE, "app-store");
@@ -68,7 +68,7 @@ await text("google-play/metadata/en-US/short-description.txt", LISTING.googlePla
 await text("google-play/metadata/en-US/full-description.txt", LISTING.googlePlay.fullDescription);
 await text(
   "google-play/metadata/en-US/release-notes.txt",
-  `Initial internal testing build for Dasnomad ${LISTING.app.version}.
+  `Initial internal testing build for DasNomad ${LISTING.app.version}.
 
 Includes live mid-market rates, four-currency conversion, optional local currency detection, home and local clocks, local travel tips, and offline access to the last saved rates. Home and current-location cards now explain how to change their currencies, and the current-location card is clearly labelled.`,
 );
@@ -201,13 +201,13 @@ await text("app-store/metadata/en-US/privacy-policy-url.txt", LISTING.app.privac
 await text("app-store/metadata/en-US/review-notes.txt", LISTING.appStore.reviewNotes);
 await text(
   "app-store/metadata/en-US/release-notes.txt",
-  `Initial TestFlight build for Dasnomad ${LISTING.app.version}.
+  `Initial TestFlight build for DasNomad ${LISTING.app.version}.
 
 Live mid-market rates, four currencies in view, optional local currency detection, home and local clocks, local travel tips, and offline access to the last saved rates. Home and current-location cards now explain how to change their currencies, and the current-location card is clearly labelled.`,
 );
 await text(
   "app-store/metadata/en-US/testflight-description.txt",
-  "Dasnomad is a calm, travel-friendly currency converter with live mid-market rates, four currencies in view, optional local currency detection, local tips, and offline access to your last saved rates. Please report bugs and confusing screens through TestFlight feedback.",
+  "DasNomad is a calm, travel-friendly currency converter with live mid-market rates, four currencies in view, optional local currency detection, local tips, and offline access to your last saved rates. Please report bugs and confusing screens through TestFlight feedback.",
 );
 await text(
   "app-store/metadata/en-US/testflight-feedback-email.txt",
@@ -367,7 +367,7 @@ const artifacts = [
   path.join(builds, APK_NAME),
 ];
 const lines = [
-  `SHA256 checksums for Dasnomad ${LISTING.app.version} (build ${LISTING.app.build})`,
+  `SHA256 checksums for DasNomad ${LISTING.app.version} (build ${LISTING.app.build})`,
   "",
 ];
 for (const artifact of artifacts) {

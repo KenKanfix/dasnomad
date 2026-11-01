@@ -1,6 +1,6 @@
 # App Store / TestFlight upload package
 
-App: Dasnomad
+App: DasNomad
 Bundle ID: io.github.kenkanfix.dasnomad
 Version: 0.1.0 (build 1)
 
@@ -15,7 +15,7 @@ the included GitHub Actions workflow on a macOS runner, or from Xcode on a Mac.
    - Capabilities: no special capabilities required.
 3. In App Store Connect, create a new app:
    - Platform: iOS
-   - Name: Dasnomad
+   - Name: DasNomad
    - Primary language: English (U.S.)
    - Bundle ID: select `io.github.kenkanfix.dasnomad`
    - SKU: `DASNOMAD001`
@@ -30,18 +30,37 @@ the included GitHub Actions workflow on a macOS runner, or from Xcode on a Mac.
    - `APPSTORE_KEY_ID` - API key ID
    - `APPSTORE_PRIVATE_KEY` - contents of the `AuthKey_*.p8` file
 
+Set the secrets from Windows without committing any credential files:
+
+```powershell
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("cert.p12")) | gh secret set IOS_CERTIFICATE_P12
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("profile.mobileprovision")) | gh secret set IOS_PROVISIONING_PROFILE
+Get-Content "AuthKey_XXXXXXXXXX.p8" -Raw | gh secret set APPSTORE_PRIVATE_KEY
+
+gh secret set IOS_CERTIFICATE_PASSWORD
+gh secret set IOS_TEAM_ID --body "YOUR_TEAM_ID"
+gh secret set APPSTORE_ISSUER_ID --body "YOUR_ISSUER_ID"
+gh secret set APPSTORE_KEY_ID --body "YOUR_KEY_ID"
+```
+
 ## Build and upload
 
 The workflow at `.github/workflows/ios.yml` builds the native web assets, creates
 a signed archive, exports an App Store IPA, uploads it to App Store Connect, and
 stores the IPA as a workflow artifact.
 
-Run it from GitHub Actions with **Build iOS > Run workflow**, or push a version tag:
+Run it from GitHub Actions with **Build iOS > Run workflow**, or from the CLI:
 
 ```powershell
-git tag v0.1.0
-git push origin v0.1.0
+gh workflow run ios.yml --ref main
 ```
+
+A tag push also triggers the workflow, but do not reuse `v0.1.0`; that tag already
+exists. Create a new tag only when the marketing version changes.
+
+If the Apple signing secrets are absent, the workflow still builds and uploads an
+unsigned archive artifact, but it cannot export a signed IPA or upload to
+TestFlight.
 
 After App Store Connect finishes processing the build, open TestFlight, select
 the build, and add internal testers. Internal testing does not require App Review.
